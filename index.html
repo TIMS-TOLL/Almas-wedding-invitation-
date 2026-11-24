@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>निकाह दावतनामा – अलमास व तौफिक</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Rozha+One&family=Mukta:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: warm, stylish, festive — a modern Nikah dawatnama a family is proud to forward.
+   IDEA: an ivory card under a golden mehrab, turned page by page, roses at its corners.
+   PICTURE: a cute original hijabi bride and kufi-wearing groom; lanterns and a crescent on the cover; a little hall for the venue.
+   COLOUR and TYPE: deep emerald night ground, ivory cards, champagne gold, blush roses; Rozha One names, Mukta body, Amiri Arabic.
+   LAYOUT: one full-screen card per section, sideways swipe, Prev/dots/Next bar at the bottom. */
+:root{color-scheme:dark;--em:#0D3A32;--em2:#082821;--ink:#123D33;--gold:#D9AE57;--gold2:#E8C77A;--blush:#F2C4CC;--ivory:#FFF9F0;--muted:#5B6E66}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--em2);color:var(--ink);font:600 17px/1.55 'Mukta',sans-serif;overflow:hidden}
+.deck{height:100svh;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;
+  background:radial-gradient(110% 60% at 50% 0%,#18584A 0%,#0D3A32 45%,#06211B 100%)}
+.deck::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;height:100svh;scroll-snap-align:start;position:relative;display:flex;justify-content:center;align-items:center;padding:20px 14px 88px}
+.bgpat{position:absolute;inset:0;pointer-events:none;opacity:.12}
+.card{position:relative;width:min(100%,480px);max-height:100%;text-align:center}
+.arch{position:relative;max-height:calc(100svh - 120px);overflow-y:auto;scrollbar-width:none;
+  padding:52px 24px 74px;background:var(--ivory);border-radius:240px 240px 26px 26px/150px 150px 26px 26px;
+  box-shadow:0 0 0 3px var(--gold),0 0 0 9px var(--ivory),0 0 0 10.5px var(--gold),0 28px 60px rgba(0,0,0,.45)}
+.arch::-webkit-scrollbar{display:none}
+.rose{position:absolute;width:118px;height:118px;pointer-events:none;z-index:2}
+.rose.tl{left:-30px;bottom:-34px}.rose.tr{right:-30px;bottom:-34px;transform:scaleX(-1)}
+.rose.top{left:50%;top:-30px;width:96px;height:70px;transform:translateX(-50%)}
+.ar{font-family:'Amiri',serif;font-weight:700;font-size:32px;line-height:1.5;margin:0;color:#9A7024}
+.name{font-family:'Rozha One',serif;font-weight:400;font-size:clamp(50px,14vw,72px);line-height:1.05;margin:4px 0 0;padding-top:6px;
+  background:linear-gradient(180deg,#1F6B57 0%,#0D3A32 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gold{background:linear-gradient(180deg,#E9C77E 0%,#B9862E 60%,#D9AE57 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:'Rozha One',serif;font-weight:400;font-size:30px;line-height:1.2;margin:0;color:var(--ink)}
+p{margin:0}
+.sub{color:var(--muted);font-size:16px;line-height:1.5}
+.tag{display:inline-block;padding:3px 22px 5px;border-radius:999px;background:var(--em);color:var(--gold2);font-family:'Rozha One',serif;font-size:22px;line-height:1.3}
+.orn{display:block;margin:10px auto;width:200px;height:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:10px 26px;border-radius:999px;
+  background:var(--em);color:var(--gold2);font:700 17px/1.2 'Mukta',sans-serif;text-decoration:none;border:2px solid var(--gold);cursor:pointer;box-shadow:0 8px 20px rgba(13,58,50,.25)}
+.btn.soft{background:transparent;color:var(--em);box-shadow:none}
+.btn:focus-visible,.nav button:focus-visible{outline:3px solid var(--blush);outline-offset:3px}
+.date{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:16px 0;border-radius:18px;background:#F6EEDF;padding:12px 4px}
+.date div{display:flex;flex-direction:column}.date div+div{border-left:1.5px dashed rgba(185,134,46,.55)}
+.date span{font-size:13px;color:var(--muted)}
+.date b{font-family:'Rozha One',serif;font-weight:400;font-size:30px;color:var(--em);line-height:1.2;white-space:nowrap}
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
+.count div{border-radius:14px;padding:8px 2px;background:var(--em);color:var(--ivory)}
+.count b{display:block;font-family:'Rozha One',serif;font-weight:400;font-size:28px;color:var(--gold2);line-height:1.1}
+.count span{font-size:13px;color:#CFE3DC}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;text-align:left;margin:14px 0 6px}
+.list div{display:flex;gap:9px;align-items:baseline;font-size:15.5px;line-height:1.35;color:var(--ink)}
+.list div::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--gold);transform:rotate(45deg) translateY(-2px)}
+.list small{display:block;font-size:13px;color:var(--muted);font-weight:500}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:14px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,transparent,rgba(6,33,27,.95) 45%)}
+.nav button{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);background:var(--em);color:var(--gold2);cursor:pointer;display:grid;place-items:center}
+.nav button[disabled]{opacity:.35;cursor:default}
+.dots{display:flex;gap:9px}
+.dots button{position:relative;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--gold2);background:transparent;padding:0;transition:width .3s}
+.dots button::after{content:"";position:absolute;inset:-16px -6px}
+.dots button[aria-current=true]{background:var(--gold2);width:28px;border-radius:8px}
+.hint{margin-top:14px;font-size:14px;color:var(--muted)}
+.in{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.slide.on .in{opacity:1;transform:none}
+.slide.on .in:nth-child(2){transition-delay:.08s}.slide.on .in:nth-child(3){transition-delay:.16s}.slide.on .in:nth-child(4){transition-delay:.24s}.slide.on .in:nth-child(n+5){transition-delay:.32s}
+.couple .float{animation:bob 4s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes bob{50%{transform:translateY(-5px)}}
+@media (prefers-reduced-motion:reduce){.in{opacity:1;transform:none;transition:none}.couple .float{animation:none}}
+@media (max-width:380px){.list{grid-template-columns:minmax(0,1fr)}.date b{font-size:24px}.arch{padding:46px 16px 64px}.rose{width:92px;height:92px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6DE9E"/><stop offset=".5" stop-color="#D9AE57"/><stop offset="1" stop-color="#A97A24"/></linearGradient>
+<pattern id="jali" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M30 4 56 30 30 56 4 30Z" fill="none" stroke="#E8C77A" stroke-width="1.2"/><circle cx="30" cy="30" r="6" fill="none" stroke="#E8C77A"/><circle cx="0" cy="0" r="2.5" fill="#E8C77A"/><circle cx="60" cy="60" r="2.5" fill="#E8C77A"/></pattern>
+<symbol id="orn" viewBox="0 0 200 20"><path d="M0 10H72M128 10H200" stroke="#D9AE57" stroke-width="1.5"/><path d="M76 10C88 0 95 0 100 10 105 20 112 20 124 10 112 0 105 0 100 10 95 20 88 20 76 10Z" fill="none" stroke="#D9AE57" stroke-width="1.5"/><circle cx="100" cy="10" r="3" fill="#D9AE57"/></symbol>
+<symbol id="bloom" viewBox="-30 -30 60 60">
+<circle r="27" fill="#E8A9B5"/><circle r="21" fill="#F2C4CC"/>
+<path d="M-14 -6C-10-20 12-20 15-6 6-14-6-14-14-6Z" fill="#E8A9B5"/><path d="M-12 8C-16-6-2-14 8-8-2-6-8 0-12 8Z" fill="#DB93A2"/><path d="M12 6C14-8 2-12-4-6 4-4 8 0 12 6Z" fill="#E8A9B5"/>
+<circle r="5" fill="#D07F90"/></symbol>
+<symbol id="bloomw" viewBox="-30 -30 60 60"><circle r="25" fill="#EFE3D3"/><circle r="19" fill="#FFF8EE"/><path d="M-12-5C-8-17 10-17 13-5 5-12-5-12-12-5Z" fill="#EFE3D3"/><path d="M-10 7C-13-5-2-12 7-7-2-5-7 0-10 7Z" fill="#E6D6C2"/><circle r="4" fill="#E2CDB2"/></symbol>
+<symbol id="leaf" viewBox="0 0 40 20"><path d="M0 10C10-2 30-2 40 10 30 22 10 22 0 10Z" fill="#5E8B72"/><path d="M2 10H36" stroke="#3F6B55" stroke-width="1.2"/></symbol>
+<symbol id="cluster" viewBox="0 0 120 120">
+<use href="#leaf" x="2" y="62" width="46" height="23" transform="rotate(-35 25 73)"/><use href="#leaf" x="56" y="80" width="46" height="23" transform="rotate(25 79 91)"/><use href="#leaf" x="40" y="20" width="40" height="20" transform="rotate(-70 60 30)"/>
+<use href="#bloom" x="22" y="34" width="62" height="62"/><use href="#bloomw" x="62" y="58" width="44" height="44"/><use href="#bloom" x="8" y="76" width="34" height="34"/>
+<circle cx="92" cy="40" r="4" fill="#D9AE57"/><circle cx="100" cy="50" r="2.6" fill="#D9AE57"/></symbol>
+<symbol id="lantern" viewBox="-40 -10 80 190"><line x1="0" y1="-10" x2="0" y2="14" stroke="#D9AE57" stroke-width="2"/><circle cx="0" cy="80" r="44" fill="#FFD47A" opacity=".18"/><path d="M-16 20H16L0 6Z" fill="url(#g)"/><path d="M-24 24H24L33 44V114L24 132H-24L-33 114V44Z" fill="#0D3A32" stroke="url(#g)" stroke-width="3"/><path d="M-21 48H21V110H-21Z" fill="#F6C453" opacity=".92"/><ellipse cx="0" cy="79" rx="10" ry="21" fill="#FFF6D6"/><path d="M-26 132H26L15 150H-15Z" fill="url(#g)"/><circle cx="0" cy="160" r="5" fill="#D9AE57"/></symbol>
+</defs>
+</svg>
+
+<main class="deck" id="deck" tabindex="-1" aria-label="निकाह दावतनामा">
+
+<!-- 1 · Cover -->
+<section class="slide" aria-label="दावतनामा">
+<svg class="bgpat" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#jali)"/></svg>
+<div class="card">
+<svg class="rose top" viewBox="0 0 96 70" aria-hidden="true"><use href="#bloom" x="26" y="8" width="44" height="44"/><use href="#leaf" x="0" y="26" width="30" height="15"/><use href="#leaf" x="66" y="26" width="30" height="15"/></svg>
+<div class="arch">
+<svg class="in" viewBox="0 0 300 130" width="100%" style="max-width:290px;display:block;margin:-6px auto 2px" aria-hidden="true">
+<use href="#lantern" x="10" y="-8" width="52" height="128"/><use href="#lantern" x="238" y="-8" width="52" height="128"/>
+<use href="#lantern" x="70" y="-12" width="32" height="84"/><use href="#lantern" x="198" y="-12" width="32" height="84"/>
+<path d="M166 18A50 50 0 1 0 166 118 39 39 0 1 1 166 18Z" fill="url(#g)"/><path d="M178 48l3.2 8.2 8.8.4-6.9 5.4 2.4 8.5-7.5-4.8-7.5 4.8 2.4-8.5-6.9-5.4 8.8-.4Z" fill="#D9AE57"/>
+</svg>
+<p class="ar in" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+<div class="in">
+<p style="font-size:20px;font-weight:700;color:#9A7024">“ अन निकाह मिन सुन्नती ”</p>
+<svg class="orn"><use href="#orn"/></svg>
+<p style="font-size:18px">ख़ुदा के फ़ज़्लो करम से हमारे यहाँ</p>
+<p class="name" style="font-size:clamp(38px,10.5vw,52px)">निकाह दावतनामा</p>
+<p class="sub">आप और आपके घर वालों को हमारी ख़ुशियों में शामिल होने की दावत है</p>
+</div>
+<div class="in" style="margin-top:18px"><button class="btn" type="button" data-go="1">दावतनामा खोलें
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+<p class="hint in">दाएँ-बाएँ स्वाइप करें</p>
+</div>
+<svg class="rose tl" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg><svg class="rose tr" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg>
+</div>
+</section>
+
+<!-- 2 · Couple -->
+<section class="slide" aria-label="दुल्हन और दूल्हा">
+<svg class="bgpat" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#jali)"/></svg>
+<div class="card">
+<div class="arch">
+<svg class="in couple" viewBox="0 0 360 300" width="100%" style="max-width:290px;display:block;margin:-22px auto -4px" role="img" aria-label="हिजाब वाली दुल्हन और टोपी वाले दूल्हे का कार्टून">
+<ellipse cx="180" cy="292" rx="140" ry="8" fill="#0D3A32" opacity=".12"/>
+<g class="float">
+<path d="M180 64c-8-13-28-6-21 9l21 19 21-19c7-15-13-22-21-9Z" fill="#E68FA2"/>
+<path d="M120 40l2 5 5 .3-4 3 1.4 5-4.4-2.8-4.4 2.8 1.4-5-4-3 5-.3Z" fill="#D9AE57"/><path d="M246 30l1.6 4 4 .2-3.1 2.5 1.1 4-3.6-2.2-3.6 2.2 1.1-4-3.1-2.5 4-.2Z" fill="#D9AE57"/>
+</g>
+<!-- groom -->
+<path d="M74 296C76 226 96 196 132 192 168 196 188 226 190 296Z" fill="#FFF6E6"/>
+<path d="M152 196C176 206 186 236 190 296H168Z" fill="#F1E3C8"/>
+<path d="M96 206 118 296H100L84 222Z" fill="#1F6B57"/><path d="M96 206 118 296" stroke="#D9AE57" stroke-width="2.4"/><path d="M84 222 100 296" stroke="#D9AE57" stroke-width="1.6" opacity=".7"/>
+<path d="M132 196V296" stroke="#D9AE57" stroke-width="2"/><g fill="#D9AE57"><circle cx="132" cy="214" r="3"/><circle cx="132" cy="234" r="3"/><circle cx="132" cy="254" r="3"/></g>
+<path d="M112 192c8 9 32 9 40 0" fill="none" stroke="#D9AE57" stroke-width="4" stroke-linecap="round"/>
+<rect x="122" y="172" width="20" height="22" rx="7" fill="#E6B48F"/>
+<circle cx="88" cy="140" r="9" fill="#EDBE98"/><circle cx="176" cy="140" r="9" fill="#EDBE98"/>
+<circle cx="132" cy="138" r="45" fill="#F3C9A6"/>
+<path d="M89 132C88 112 100 100 112 96 98 110 96 124 96 140Z" fill="#2E2019"/><path d="M175 132C176 112 164 100 152 96 166 110 168 124 168 140Z" fill="#2E2019"/>
+<path d="M90 146C94 186 170 186 174 146 166 166 150 176 132 176S98 166 90 146Z" fill="#2E2019"/>
+<path d="M118 162c6 6 22 6 28 0" fill="none" stroke="#2E2019" stroke-width="5" stroke-linecap="round"/>
+<path d="M90 118C92 84 172 84 174 118Z" fill="#FFFFFF"/><path d="M90 118H174" stroke="#1F6B57" stroke-width="6"/><path d="M96 106h72M104 96h56" stroke="#D9AE57" stroke-width="1.6" stroke-dasharray="2 5" stroke-linecap="round"/>
+<path d="M108 138q9-9 18 0M138 138q9-9 18 0" fill="none" stroke="#2E2019" stroke-width="3.4" stroke-linecap="round"/>
+<ellipse cx="106" cy="153" rx="8" ry="5.5" fill="#F39BA4" opacity=".5"/><ellipse cx="158" cy="153" rx="8" ry="5.5" fill="#F39BA4" opacity=".5"/>
+<path d="M124 166q8 7 16 0" fill="#B5545E"/>
+<!-- bride -->
+<path d="M180 296C186 232 206 204 236 200 266 204 286 232 292 296Z" fill="#F4C9D1"/>
+<path d="M262 206C280 220 288 250 292 296H270Z" fill="#E9AFBC"/>
+<path d="M188 278c30 8 66 8 96 0" fill="none" stroke="#D9AE57" stroke-width="3"/><g fill="#D9AE57"><circle cx="214" cy="290" r="2.4"/><circle cx="236" cy="292" r="2.4"/><circle cx="258" cy="290" r="2.4"/></g>
+<path d="M182 146C180 92 292 92 290 146 292 184 300 214 310 240 284 238 266 224 258 208H214C206 224 188 238 162 240 172 214 180 184 182 146Z" fill="#FADDE3"/>
+<path d="M290 146C292 184 300 214 310 240 296 240 286 236 278 230 284 208 286 178 282 150Z" fill="#F2C4CC"/>
+<path d="M194 120C206 96 266 96 278 120" fill="none" stroke="#F2C4CC" stroke-width="3"/>
+<ellipse cx="236" cy="148" rx="38" ry="42" fill="#F7D3B6"/>
+<path d="M197 140C200 106 272 106 275 140 262 124 210 124 197 140Z" fill="#FADDE3"/>
+<path d="M198 140C202 112 270 112 274 140" fill="none" stroke="#EAB4C0" stroke-width="2.4"/>
+<circle cx="276" cy="128" r="5" fill="#D9AE57"/><circle cx="276" cy="128" r="2" fill="#FFF6D6"/>
+<path d="M216 148q8-8 16 0M240 148q8-8 16 0" fill="none" stroke="#3A2419" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M215 145l-4-3M257 145l4-3" stroke="#3A2419" stroke-width="2" stroke-linecap="round"/>
+<ellipse cx="212" cy="162" rx="8" ry="5.5" fill="#F48FA6" opacity=".55"/><ellipse cx="260" cy="162" rx="8" ry="5.5" fill="#F48FA6" opacity=".55"/>
+<path d="M228 170q8 7 16 0" fill="#D2456A"/>
+<g transform="translate(236 232)"><use href="#leaf" x="-30" y="-6" width="26" height="13" transform="rotate(-25)"/><use href="#leaf" x="6" y="-6" width="26" height="13" transform="rotate(25)"/><use href="#bloom" x="-22" y="-20" width="24" height="24"/><use href="#bloomw" x="-2" y="-22" width="22" height="22"/><use href="#bloom" x="-11" y="-6" width="22" height="22"/><ellipse cx="-14" cy="12" rx="7" ry="6" fill="#F7D3B6"/><ellipse cx="14" cy="12" rx="7" ry="6" fill="#F7D3B6"/></g>
+</svg>
+<p class="name in">अलमास</p>
+<p class="sub in">मरहूम शेख बशिरभाई कारभारी, चांदेकसारे, ता. कोपरगांव इनकी दुख़्तर</p>
+<div class="in"><svg class="orn"><use href="#orn"/></svg><span class="tag">हमराह</span></div>
+<p class="name in">तौफिक</p>
+<p class="sub in">मरहूम अ. गफ़ूर शेख चाँद (टेलर) इनके पिसरज़ादा और<br>ज. शेख अब्दुल समद अ. गफ़ूर, बेलापूरवाले इनके फ़र्ज़न्द</p>
+</div>
+<svg class="rose tl" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg><svg class="rose tr" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg>
+</div>
+</section>
+
+<!-- 3 · Aqd date -->
+<section class="slide" aria-label="अक़्द की तारीख़">
+<svg class="bgpat" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#jali)"/></svg>
+<div class="card">
+<svg class="rose top" viewBox="0 0 96 70" aria-hidden="true"><use href="#bloom" x="26" y="8" width="44" height="44"/><use href="#leaf" x="0" y="26" width="30" height="15"/><use href="#leaf" x="66" y="26" width="30" height="15"/></svg>
+<div class="arch">
+<div class="in"><span class="tag">इनका अक़्द-ए-मसूद</span></div>
+<p class="in" style="margin-top:14px">इन्शा अल्लाह उर्दू तारीख़ २३ जमादील आख़िर १४४८ हिजरी मुताबिक़ अंग्रेज़ी तारीख़ ०३/१२/२०२६ बरोज़ जुमेरात, सुबह ११:३० बजे होना क़रार पाया है।</p>
+<div class="date in">
+<div><span>बरोज़</span><b>जुमेरात</b></div>
+<div><span>दिसंबर २०२६</span><b>०३</b></div>
+<div><span>सुबह</span><b>११:३०</b></div>
+</div>
+<div class="in" id="cdwrap">
+<p style="font-size:14px;color:var(--muted)">निकाह में बाक़ी वक़्त</p>
+<div class="count" id="count">
+<div><b data-k="d">–</b><span>दिन</span></div><div><b data-k="h">–</b><span>घंटे</span></div><div><b data-k="m">–</b><span>मिनट</span></div><div><b data-k="s">–</b><span>सेकंड</span></div>
+</div>
+</div>
+<p class="sub in">लिहाज़ा इस कार-ए-ख़ैर में शिरकत फ़रमाकर दूल्हा-दुल्हन को दुआ-ए-ख़ैर से नवाज़ें और हमें ख़िदमत का मौक़ा दें।</p>
+<div class="in" style="margin-top:16px"><a class="btn soft" id="cal" href="#">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+कैलेंडर में जोड़ें</a></div>
+</div>
+</div>
+</section>
+
+<!-- 4 · Ahlekar -->
+<section class="slide" aria-label="अहलेकार">
+<svg class="bgpat" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#jali)"/></svg>
+<div class="card">
+<div class="arch">
+<div class="in"><span class="tag">अहलेकार</span></div>
+<div class="in" style="margin-top:14px">
+<p class="gold" style="font-family:'Rozha One',serif;font-size:32px;line-height:1.2">सैयदबाबा शेख</p>
+<p style="font-size:14px;color:var(--muted)">(राष्ट्रीय समाज पार्टी, महाराष्ट्र प्रदेश सचिव)</p>
+</div>
+<svg class="orn in"><use href="#orn"/></svg>
+<div class="list in">
+<div><span>Adv. हाजी अहमद कारभारी शेख</span></div>
+<div><span>दाऊदभाई करीमभाई शेख (अंकल)<small>(तालुका अध्यक्ष भाजपा अल्पसंख्यक मोर्चा कोपरगांव)</small></span></div>
+<div><span>हाजी चाँदभाई जानमोहम्मद शेख (रि. हेडमास्टर)</span></div>
+<div><span>राजमोहम्मद दादाभाई शेख</span></div>
+<div><span>वसीम सैयदनूर शेख<small>(उपसरपंच, ग्राम पंचायत, चांदेकसारे)</small></span></div>
+<div><span>फारूख मुंशीभाई शेख</span></div>
+<div><span>मोईन बशिरभाई शेख</span></div>
+<div><span>नाजिम बशिरभाई शेख</span></div>
+</div>
+<div class="in" style="margin-top:14px"><span class="tag" style="font-size:20px">इंतज़ाम</span>
+<p style="margin-top:10px">मस्जिदवार जमाअत, इस्लामबाड़ी, तक्वा, चांदेकसारे</p>
+<p>शेख परिवार, तमाम रिश्तेदार, दोस्त अहेबाब</p></div>
+</div>
+<svg class="rose tl" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg><svg class="rose tr" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg>
+</div>
+</section>
+
+<!-- 5 · Venue -->
+<section class="slide" aria-label="शादी-ब-मुक़ाम">
+<svg class="bgpat" width="100%" height="100%" aria-hidden="true"><rect width="100%" height="100%" fill="url(#jali)"/></svg>
+<div class="card">
+<svg class="rose top" viewBox="0 0 96 70" aria-hidden="true"><use href="#bloom" x="26" y="8" width="44" height="44"/><use href="#leaf" x="0" y="26" width="30" height="15"/><use href="#leaf" x="66" y="26" width="30" height="15"/></svg>
+<div class="arch">
+<div class="in"><span class="tag">शादी-ब-मुक़ाम</span></div>
+<svg class="in" viewBox="0 0 320 150" width="100%" style="max-width:280px;display:block;margin:14px auto 4px" aria-hidden="true">
+<ellipse cx="160" cy="146" rx="150" ry="5" fill="#0D3A32" opacity=".12"/>
+<rect x="36" y="20" width="12" height="126" fill="#F1E3C8"/><path d="M32 20h20L42 0Z" fill="url(#g)"/>
+<rect x="272" y="20" width="12" height="126" fill="#F1E3C8"/><path d="M268 20h20L278 0Z" fill="url(#g)"/>
+<rect x="62" y="74" width="196" height="72" fill="#1F6B57"/>
+<path d="M110 74c0-36 22-52 50-58 28 6 50 22 50 58Z" fill="url(#g)"/><rect x="157" y="2" width="6" height="16" fill="url(#g)"/>
+<path d="M144 146v-30c0-10 7-16 16-16s16 6 16 16v30Z" fill="#0D3A32"/>
+<g fill="#F6C453"><path d="M84 132v-24c0-7 5-11 10-11s10 4 10 11v24Z"/><path d="M216 132v-24c0-7 5-11 10-11s10 4 10 11v24Z"/></g>
+<path d="M62 74h196" stroke="#D9AE57" stroke-width="3"/>
+<use href="#bloom" x="50" y="124" width="24" height="24"/><use href="#bloom" x="246" y="124" width="24" height="24"/>
+</svg>
+<p class="name in" style="font-size:clamp(32px,9vw,44px)">साई लक्ष्मी मंगल कार्यालय</p>
+<p class="sub in">शिर्डी-नाशिक रोड, चांदेकसारे, ता. कोपरगांव, जि. अहिल्यानगर</p>
+<div class="in" style="margin-top:18px">
+<a class="btn" id="map" href="https://www.google.com/maps/search/?api=1&query=Sai%20Laxmi%20Mangal%20Karyalay%2C%20Shirdi-Nashik%20Road%2C%20Chandekasare%2C%20Kopargaon" target="_blank" rel="noopener">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+Google Map पर रास्ता देखें</a>
+</div>
+<svg class="orn in"><use href="#orn"/></svg>
+<p class="in gold" style="font-family:'Rozha One',serif;font-size:22px;line-height:1.35">आपकी तशरीफ़ आवरी हमारे लिए बाइस-ए-मसर्रत होगी</p>
+</div>
+<svg class="rose tl" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg><svg class="rose tr" viewBox="0 0 120 120" aria-hidden="true"><use href="#cluster"/></svg>
+</div>
+</section>
+</main>
+
+<nav class="nav" aria-label="पेज">
+<button type="button" id="prev" aria-label="पिछला पेज"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+<div class="dots" id="dots"></div>
+<button type="button" id="next" aria-label="अगला पेज"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+</nav>
+
+<script>
+{
+const deck=document.getElementById('deck');
+const slides=[...deck.querySelectorAll('.slide')];
+const dots=document.getElementById('dots');
+const prev=document.getElementById('prev'),next=document.getElementById('next');
+let cur=0;
+slides.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','पेज '+(i+1));b.addEventListener('click',()=>go(i));dots.appendChild(b)});
+function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',inline:'start',block:'nearest'})}
+function mark(i){cur=i;[...dots.children].forEach((d,k)=>d.setAttribute('aria-current',k===i));prev.disabled=i===0;next.disabled=i===slides.length-1;slides[i].classList.add('on')}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.55)mark(slides.indexOf(e.target))})},{root:deck,threshold:[.55,.9]});
+slides.forEach(s=>io.observe(s));
+mark(0);
+prev.addEventListener('click',()=>go(cur-1));next.addEventListener('click',()=>go(cur+1));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.go)));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+
+const target=Date.UTC(2026,11,3,6,0,0);
+let fmt;try{fmt=new Intl.NumberFormat('hi-IN-u-nu-deva')}catch(e){fmt={format:n=>String(n)}}
+const cells={};document.querySelectorAll('#count [data-k]').forEach(b=>cells[b.dataset.k]=b);
+let timer;
+function tick(){const ms=target-Date.now();
+  if(ms<=0){const w=document.getElementById('cdwrap');w.textContent='';const p=document.createElement('p');p.textContent='अल्हम्दुलिल्लाह! निकाह मुबारक हो';p.style.cssText='font-size:20px;color:#1F6B57';w.appendChild(p);clearInterval(timer);return}
+  const s=Math.floor(ms/1000);const v={d:Math.floor(s/86400),h:Math.floor(s%86400/3600),m:Math.floor(s%3600/60),s:s%60};
+  for(const k in v)cells[k].textContent=fmt.format(v[k])}
+timer=setInterval(tick,1000);tick();
+
+const cal='https://calendar.google.com/calendar/render?action=TEMPLATE'
+ +'&text='+encodeURIComponent('निकाह – अलमास व तौफिक')
+ +'&dates=20261203T060000Z/20261203T090000Z'
+ +'&details='+encodeURIComponent('अक़्द-ए-मसूद, सुबह ११:३० बजे')
+ +'&location='+encodeURIComponent('Sai Laxmi Mangal Karyalay, Shirdi-Nashik Road, Chandekasare, Tal. Kopargaon, Dist. Ahilyanagar');
+const c=document.getElementById('cal');c.href=cal;c.target='_blank';c.rel='noopener';
+}
+</script>
+</body>
+</html>
