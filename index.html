@@ -182,11 +182,11 @@ p{margin:0}
 <svg class="rose top" viewBox="0 0 96 70" aria-hidden="true"><use href="#bloom" x="26" y="8" width="44" height="44"/><use href="#leaf" x="0" y="26" width="30" height="15"/><use href="#leaf" x="66" y="26" width="30" height="15"/></svg>
 <div class="arch">
 <div class="in"><span class="tag">इनका अक़्द-ए-मसूद</span></div>
-<p class="in" style="margin-top:14px">इन्शा अल्लाह उर्दू तारीख़ २३ जमादील आख़िर १४४८ हिजरी मुताबिक़ अंग्रेज़ी तारीख़ ०३/१२/२०२६ बरोज़ जुमेरात, सुबह ११:३० बजे होना क़रार पाया है।</p>
+<p class="in" style="margin-top:14px">इन्शा अल्लाह उर्दू तारीख़ २३ जमादील आख़िर १४४८ हिजरी मुताबिक़ अंग्रेज़ी तारीख़ ०३/१२/२०२६ बरोज़ जुमेरात, दोपहर १२:१५ बजे होना क़रार पाया है।</p>
 <div class="date in">
 <div><span>बरोज़</span><b>जुमेरात</b></div>
 <div><span>दिसंबर २०२६</span><b>०३</b></div>
-<div><span>सुबह</span><b>११:३०</b></div>
+<div><span>दोपहर</span><b>१२:१५</b></div>
 </div>
 <div class="in" id="cdwrap">
 <p style="font-size:14px;color:var(--muted)">निकाह में बाक़ी वक़्त</p>
@@ -214,14 +214,15 @@ p{margin:0}
 </div>
 <svg class="orn in"><use href="#orn"/></svg>
 <div class="list in">
-<div><span>Adv. हाजी अहमद कारभारी शेख</span></div>
+<div><span>अ‍ॅडव्हा. हाजी अहमद कारभारी शेख</span></div>
 <div><span>दाऊदभाई करीमभाई शेख (अंकल)<small>(तालुका अध्यक्ष भाजपा अल्पसंख्यक मोर्चा कोपरगांव)</small></span></div>
 <div><span>हाजी चाँदभाई जानमोहम्मद शेख (रि. हेडमास्टर)</span></div>
 <div><span>राजमोहम्मद दादाभाई शेख</span></div>
-<div><span>वसीम सैयदनूर शेख<small>(उपसरपंच, ग्राम पंचायत, चांदेकसारे)</small></span></div>
 <div><span>फारूख मुंशीभाई शेख</span></div>
-<div><span>मोईन बशिरभाई शेख</span></div>
+<div><span>वसीम सैयदनूर शेख<small>(उपसरपंच, ग्राम पंचायत, चांदेकसारे)</small></span></div>
+<div><span>मतीन सैयदनूर शेख<small>(मा. सरपंच, ग्राम पंचायत, चांदेकसारे)</small></span></div>
 <div><span>नाजिम बशिरभाई शेख</span></div>
+<div><span>मोईन बशिरभाई शेख</span></div>
 </div>
 <div class="in" style="margin-top:14px"><span class="tag" style="font-size:20px">इंतज़ाम</span>
 <p style="margin-top:10px">मस्जिदवार जमाअत, इस्लामबाड़ी, तक्वा, चांदेकसारे</p>
@@ -287,7 +288,7 @@ prev.addEventListener('click',()=>go(cur-1));next.addEventListener('click',()=>g
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.go)));
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
 
-const target=Date.UTC(2026,11,3,6,0,0);
+const target=Date.UTC(2026,11,3,6,45,0);
 let fmt;try{fmt=new Intl.NumberFormat('hi-IN-u-nu-deva')}catch(e){fmt={format:n=>String(n)}}
 const cells={};document.querySelectorAll('#count [data-k]').forEach(b=>cells[b.dataset.k]=b);
 let timer;
@@ -299,8 +300,8 @@ timer=setInterval(tick,1000);tick();
 
 const cal='https://calendar.google.com/calendar/render?action=TEMPLATE'
  +'&text='+encodeURIComponent('निकाह – अलमास व तौफिक')
- +'&dates=20261203T060000Z/20261203T090000Z'
- +'&details='+encodeURIComponent('अक़्द-ए-मसूद, सुबह ११:३० बजे')
+ +'&dates=20261203T064500Z/20261203T094500Z'
+ +'&details='+encodeURIComponent('अक़्द-ए-मसूद, दोपहर १२:१५ बजे')
  +'&location='+encodeURIComponent('Sai Laxmi Mangal Karyalay, Shirdi-Nashik Road, Chandekasare, Tal. Kopargaon, Dist. Ahilyanagar');
 const c=document.getElementById('cal');c.href=cal;c.target='_blank';c.rel='noopener';
 }
